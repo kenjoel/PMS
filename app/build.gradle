@@ -52,6 +52,25 @@ dependencies {
     implementation 'org.parceler:parceler-api:1.1.13'
     annotationProcessor 'org.parceler:parceler:1.1.13'
 
+//When you use Firebase BOM, you do not have to keep specifying what version of firebase services you need you specify once on the BOM
+    implementation platform('com.google.firebase:firebase-bom:26.1.1')
+
+//firebase analytics
+    implementation 'com.google.firebase:firebase-analytics'
+
+//authentication
+    implementation 'com.google.firebase:firebase-auth'
+
+//butterknife dependencies
+    implementation 'com.jakewharton:butterknife:10.2.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
+
+//cardview layout
+    implementation 'androidx.cardview:cardview:1.0.0'
+
+
+
 //Image
     implementation 'com.github.bumptech.glide:glide:4.7.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
@@ -65,7 +84,7 @@ dependencies {
 
 //Add firebase SDK
 //    implementation 'com.google.firebase:firebase-core:19.2.0'
-    implementation 'com.google.firebase:firebase-core:17.5.1'
+    implementation 'com.google.firebase:firebase-core'
 //Realtime Database for firebase data saving
     implementation 'com.google.firebase:firebase-database:19.5.1'
 //    implementation 'com.google.firebase:firebase-database:19.5.0'
@@ -73,9 +92,7 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-database:6.2.0'
 //    implementation 'com.firebaseui:firebase-ui-database:3.3.1'
     implementation 'com.google.android.material:material:1.2.1'
-//Firebase User Authentication
-//    implementation 'com.google.firebase:firebase-auth:17.2.1'
-    implementation 'com.google.firebase:firebase-auth:19.4.0'
-
 
 }
+
+apply plugin: 'com.google.gms.google-services'
