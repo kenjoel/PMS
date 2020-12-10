@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "637414645744",
+    "project_id": "perpetual-motion-squad",
+    "storage_bucket": "perpetual-motion-squad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:637414645744:android:14f56cfde3d4c7c54ec735",
+        "android_client_info": {
+          "package_name": "com.moringaschool.pms"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "637414645744-svg5p7vd5393kop7s61345t00itk8uim.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.moringaschool.pms",
+            "certificate_hash": "f999f9afdfdaa820ad348d0e558be7db38ed9baa"
+          }
+        },
+        {
+          "client_id": "637414645744-mkfmsusbnghaq16fjpjclccca4g5m79f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAeC_1gq6c25d4bhW5r1lPH3W94OBmlr4E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "637414645744-mkfmsusbnghaq16fjpjclccca4g5m79f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
