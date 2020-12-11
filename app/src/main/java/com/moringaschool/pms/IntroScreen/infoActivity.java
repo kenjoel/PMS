@@ -1,4 +1,4 @@
-package com.moringaschool.pms;
+package com.moringaschool.pms.IntroScreen;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import com.moringaschool.pms.MainActivity;
+import com.moringaschool.pms.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

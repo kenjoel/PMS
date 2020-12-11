@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/home"
+        android:title="Home"
+        android:icon="@drawable/ic_home"/>
+
+    <item
+        android:id="@+id/loans"
+        android:title="Loans"
+        android:icon="@drawable/ic_money"/>
+
+<!--    <item-->
+<!--        android:id="@+id/about"-->
+<!--        android:title="About"-->
+<!--        android:icon="@drawable/ic_help"/>-->
+
+<!--    <item-->
+<!--        android:id="@+id/content"-->
+<!--        android:title="Content"-->
+<!--        android:icon="@drawable/ic_content" />-->
+
+    <item
+        android:id="@+id/account"
+        android:title="Profile"
+        android:icon="@drawable/ic_account"/>
+
+
+</menu>

@@ -9,11 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Aquaponics">
-        <activity android:name=".Authentication.SignUpActivity"></activity>
+        <activity android:name=".user"></activity>
+        <activity android:name=".loans" />
+        <activity android:name=".Home" />
+        <activity android:name=".Authentication.SignUpActivity" />
         <activity android:name=".Authentication.LoginActivity" />
-        <activity android:name=".HomePageActivity" />
-        <activity android:name=".infoActivity" />
-        <activity android:name=".IntroActivity">
+        <activity android:name=".IntroScreen.HomePageActivity" />
+        <activity android:name=".IntroScreen.infoActivity" />
+        <activity android:name=".IntroScreen.IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
