@@ -1,10 +1,9 @@
-package com.moringaschool.pms;
+package com.moringaschool.pms.IntroScreen;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -12,10 +11,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserProfileChangeRequest;
 import com.moringaschool.pms.Authentication.LoginActivity;
+import com.moringaschool.pms.R;
+import com.moringaschool.pms.loans;
+import com.moringaschool.pms.user;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,6 +43,35 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
 
 //        setUserDetails();
 //        getUserDetails();
+
+        //Initialize and Assign Variables
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        //Set Home Selected
+        bottomNavigationView.setSelectedItemId(R.id.home);
+
+        //Perform ItemSelectedListener
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.home:
+                        return true;
+
+                    case R.id.loans:
+                        startActivity(new Intent(getApplicationContext(), loans.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.account:
+                        startActivity(new Intent(getApplicationContext(), user.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+
+                return false;
+            }
+        });
     }
 
     @Override

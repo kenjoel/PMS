@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.moringaschool.pms.IntroScreen.HomePageActivity;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
