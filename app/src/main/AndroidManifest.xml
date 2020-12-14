@@ -9,21 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Aquaponics">
-        <activity android:name=".user"></activity>
-        <activity android:name=".loans" />
-        <activity android:name=".Home" />
+
+
+        <activity android:name=".IntroScreen.HostActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Design.Light.NoActionBar">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+
+
         <activity android:name=".Authentication.SignUpActivity" />
         <activity android:name=".Authentication.LoginActivity" />
-        <activity android:name=".IntroScreen.HomePageActivity" />
-        <activity android:name=".IntroScreen.infoActivity" />
-        <activity android:name=".IntroScreen.IntroActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".HomePageActivity"/>
+        <activity android:name=".loans" />
+        <activity android:name=".user" />
 
         <meta-data
             android:name="preloaded_fonts"

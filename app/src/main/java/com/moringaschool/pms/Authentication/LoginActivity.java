@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.moringaschool.pms.IntroScreen.HomePageActivity;
+import com.moringaschool.pms.HomePageActivity;
 import com.moringaschool.pms.R;
 
 import android.content.Intent;
