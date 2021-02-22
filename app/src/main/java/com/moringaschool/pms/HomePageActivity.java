@@ -17,9 +17,17 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.moringaschool.pms.Authentication.LoginActivity;
 import com.moringaschool.pms.IntroScreen.HostActivity;
+import com.moringaschool.pms.Services.PMSApi;
+import com.moringaschool.pms.Services.PMSClient;
+import com.moringaschool.pms.model.ApiReturn;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomePageActivity extends AppCompatActivity {
     private static String TAG = "This is in HomePageActivity";
@@ -66,6 +74,23 @@ public class HomePageActivity extends AppCompatActivity {
                 }
 
                 return false;
+            }
+        });
+
+        //Receiving Response and callback method
+
+        PMSApi receivedClient = PMSClient.getClient();
+        Call<List<ApiReturn>> call = receivedClient.getArticles();
+
+        call.enqueue(new Callback<List<ApiReturn>>() {
+            @Override
+            public void onResponse(Call<List<ApiReturn>> call, Response<List<ApiReturn>> response) {
+                Log.i(TAG, "onResponse: response received successfully");
+            }
+
+            @Override
+            public void onFailure(Call<List<ApiReturn>> call, Throwable t) {
+                Log.e(TAG, "onFailure: receiving response failed", t);
             }
         });
     }
