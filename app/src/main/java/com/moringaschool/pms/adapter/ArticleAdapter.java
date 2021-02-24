@@ -68,7 +68,10 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
 
 
         public void bindArticle(ApiReturn pmsArticles){
-           Picasso.get().load(pmsArticles.getImgurl()).into(pmsImageView);
+            // picasso couldnt load empty image links, looking for possible ways to solve this
+
+           //Picasso.get().load(pmsArticles.getImgurl()).into(pmsImageView);
+
             pmsHeadlineArticle.setText( pmsArticles.getHeadline());
 
         }
