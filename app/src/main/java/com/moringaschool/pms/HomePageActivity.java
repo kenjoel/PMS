@@ -2,6 +2,8 @@ package com.moringaschool.pms;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -11,19 +13,37 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.moringaschool.pms.Authentication.LoginActivity;
 import com.moringaschool.pms.IntroScreen.HostActivity;
+import com.moringaschool.pms.Services.PMSApi;
+import com.moringaschool.pms.Services.PMSClient;
+import com.moringaschool.pms.adapter.ArticleAdapter;
+import com.moringaschool.pms.model.ApiReturn;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomePageActivity extends AppCompatActivity {
     private static String TAG = "This is in HomePageActivity";
     private FirebaseAuth.AuthStateListener mAuthListener;
+
+    @BindView(R.id.recyclerView) RecyclerView pmsViews;
+    @BindView(R.id.progressBar) ProgressBar progressBar;
+    @BindView(R.id.errorTextView) TextView errorTextView;
+
+    private List<ApiReturn> articles;
+    private ArticleAdapter pmsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +86,42 @@ public class HomePageActivity extends AppCompatActivity {
                 }
 
                 return false;
+            }
+        });
+
+        //Receiving Response and callback method
+
+        PMSApi receivedClient = PMSClient.getClient();
+        Call<List<ApiReturn>> call = receivedClient.getArticles();
+
+        call.enqueue(new Callback<List<ApiReturn>>() {
+            @Override
+            public void onResponse(Call<List<ApiReturn>> call, Response<List<ApiReturn>> response) {
+                Log.i(TAG, "onResponse: response received successfully");
+
+                hideProgressBar();
+                if(response.isSuccessful()){
+                    articles = response.body();
+                    pmsAdapter =    new ArticleAdapter(HomePageActivity.this, articles);
+                    pmsViews.setAdapter(pmsAdapter);
+                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(HomePageActivity.this);
+
+                    pmsViews.setLayoutManager(layoutManager);
+                    pmsViews.setHasFixedSize(true);
+
+                    showArticles();
+
+                }else{
+                    showUnsuccessfulMessage();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<ApiReturn>> call, Throwable t) {
+                Log.e(TAG, "onFailure: receiving response failed", t);
+                hideProgressBar();
+                showFailureMessage();
             }
         });
     }
@@ -177,6 +233,24 @@ public class HomePageActivity extends AppCompatActivity {
         if (mAuthListener != null) {
             FirebaseAuth.getInstance().removeAuthStateListener(mAuthListener);
         }
+    }
+
+    private void showFailureMessage() {
+        errorTextView.setText("Something went wrong.");
+        errorTextView.setVisibility(View.VISIBLE);
+    }
+
+    private void showUnsuccessfulMessage() {
+        errorTextView.setText("Something went wrong. Please try again later");
+        errorTextView.setVisibility(View.VISIBLE);
+    }
+
+    private void showArticles() {
+        pmsViews.setVisibility(View.VISIBLE);
+    }
+
+    private void hideProgressBar() {
+        progressBar.setVisibility(View.GONE);
     }
 
 }
